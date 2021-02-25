@@ -1,0 +1,17 @@
+{
+  "additionalProperties": true,
+  "nullable": false,
+  "properties": {
+    "name": {
+      "description": "A human-readable string describing the source of diagnostics, e.g.\n 'typescript' or 'super lint'.",
+      "nullable": false,
+      "type": "string"
+    },
+    "url": {
+      "description": "URL to this source.\n Optional.",
+      "nullable": false,
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

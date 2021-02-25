@@ -1,0 +1,54 @@
+{
+  "additionalProperties": true,
+  "definitions": {
+    "reviewdog.rdf.Position": {
+      "additionalProperties": true,
+      "nullable": false,
+      "properties": {
+        "column": {
+          "description": "Column number, starting at 1 (byte count in UTF-8).\n Example: 'a\ud801\udc00b'\n  The column of a: 1\n  The column of \ud801\udc00: 2\n  The column of b: 6 since \ud801\udc00 is represented with 4 bytes in UTF-8.\n Optional.",
+          "nullable": false,
+          "type": "integer"
+        },
+        "line": {
+          "description": "Line number, starting at 1.\n Optional.",
+          "nullable": false,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "description": "Suggestion represents a suggested text manipulation to resolve a diagnostic\n problem.\n\n Insert example ('hayabusa' -> 'haya15busa'):\n   range {\n     start {\n       line: 1\n       column: 5\n     }\n     end {\n       line: 1\n       column: 5\n     }\n   }\n   text: 15\n |h|a|y|a|b|u|s|a|\n 1 2 3 4 5 6 7 8 9\n         ^--- insert '15'\n\n Update example ('haya15busa' -> 'haya14busa'):\n   range {\n     start {\n       line: 1\n       column: 5\n     }\n     end {\n       line: 1\n       column: 7\n     }\n   }\n   text: 14\n |h|a|y|a|1|5|b|u|s|a|\n 1 2 3 4 5 6 7 8 9 0 1\n         ^---^ replace with '14'",
+  "nullable": false,
+  "properties": {
+    "range": {
+      "additionalProperties": true,
+      "description": "Range at which this suggestion applies.\n To insert text into a document create a range where start == end.",
+      "nullable": false,
+      "properties": {
+        "end": {
+          "$ref": "reviewdog.rdf.Position",
+          "additionalProperties": true,
+          "description": "end can be omitted. Then the range is handled as zero-length (start == end).\n Optional.",
+          "nullable": false,
+          "type": "object"
+        },
+        "start": {
+          "$ref": "reviewdog.rdf.Position",
+          "additionalProperties": true,
+          "description": "Required.",
+          "nullable": false,
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "text": {
+      "description": "A suggested text which replace the range.\n For delete operations use an empty string.",
+      "nullable": false,
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

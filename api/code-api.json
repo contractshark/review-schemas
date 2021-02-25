@@ -1,0 +1,17 @@
+{
+  "additionalProperties": true,
+  "nullable": false,
+  "properties": {
+    "url": {
+      "description": "A URL to open with more information about this rule code.\n Optional.",
+      "nullable": false,
+      "type": "string"
+    },
+    "value": {
+      "description": "This rule's code/identifier.",
+      "nullable": false,
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

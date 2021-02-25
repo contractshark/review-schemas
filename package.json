@@ -1,0 +1,15 @@
+{
+  "name": "contractshark-review-spec",
+  "version": "0.0.0",
+  "description": "reviewdog RDF schemas ",
+  "main": "index.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SEE CONTRIBUTORS",
+  "license": "SEE LICENSE IN LICENSE",
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-plugin-json": "^2.1.2"
+  }
+}
